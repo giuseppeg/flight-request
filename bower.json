@@ -1,0 +1,31 @@
+{
+  "name": "flight-request",
+  "description": "A Flight mixin for making XHR requests",
+  "version": "0.0.1",
+  "keywords": [
+    "flight",
+    "flightjs",
+    "flight-component",
+    "component",
+    "flight-mixin",
+    "mixin",
+    "flight-request"
+  ],
+  "main": "lib/with_request.js",
+  "dependencies": {
+    "flight": "~1.1.0"
+  },
+  "devDependencies": {
+    "jasmine-flight": "~2.2.0"
+  },
+  "ignore": [
+    ".gitignore",
+    ".gitattributes",
+    ".travis.yml",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "test",
+    "package.json",
+    "karma.conf.js"
+  ]
+}

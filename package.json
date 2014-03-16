@@ -1,0 +1,31 @@
+{
+  "name": "flight-request",
+  "description": "A Flight mixin for making XHR requests",
+  "version": "0.0.1",
+  "keywords": [
+    "flight",
+    "flightjs",
+    "flight-component",
+    "component",
+    "flight-mixin",
+    "mixin",
+    "flight-request"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bump": "latest",
+    "karma": "~0.10.0",
+    "karma-jasmine": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-ie-launcher": "~0.1.1",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-safari-launcher": "~0.1.1",
+    "matchdep": "latest"
+  },
+  "scripts": {
+    "test": "karma start --single-run --reporters dots --browsers PhantomJS",
+    "watch-test": "karma start"
+  }
+}
