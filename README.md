@@ -49,7 +49,7 @@ define(function (require) {
 ### Methods
 flight-request exposes the following methods:
 
-* `this.get`, `this.post`, `this.put`, `this.delete` - return a jqXHR object [*].
+* `this.get`, `this.post`, `this.put`, `this.destroy` (you can also use `this.delete` if you are in a ES5 env) - return a jqXHR object [*].
 * `this.abort` takes a jqXHR object as parameter and aborts the given request.
 * `this.abortAllRequests` - to abort all the open xhr requests.
 
