@@ -19,17 +19,6 @@ define(function (require) {
 	return defineComponent(dataComponent, withRequest);
 
 	function dataComponent() {
-		this.yay = function () { console.log('Skål! x2'); };
-		this.burp = function () { 
-			console.log(
-				[
-					'b', 
-					(new Array(Math.floor(Math.random()*10) + 1).join("u")), 
-					'rp!'
-				].join('')
-			); 
-		};
-
 		this.after('initialize', function () {
 			this.get({
 				url: 'http://b.ar/gimme-beer',
@@ -37,9 +26,6 @@ define(function (require) {
 					console.log('Skål!');
 				}
 			});
-
-			this.on('request.success', this.yay);
-			this.on('request.complete', this.burp);
 		});
 	}
 });
@@ -63,10 +49,21 @@ which is read by the server and the request dispatched accordingly.</blockquote>
 In those cases the request's data object contains a `_method` property with the original request type (verb).
 
 [*] by default the requests can be aborted either with this.abort or this.abortAllRequest. If you want to prevent this to happen you can set `noAbort` to true and pass it along with the ajax settings
+
 ### Events
-* `request.success` - triggered with the response payload 
-* `request.error`  - triggered with `response.status`, `response.message`, JSON rapresentation of the jqXHR.responseText (when the response status is 0), `response.ìsAbort` when the request is aborted. (here `response` is the event payload obj)
-* `request.complete` - triggered with the success or error data.
+You can specify custom events names (instead of functions) to be triggered on `success` and/or `error`.
+Thanks to Angus Croll for the [suggestion](https://github.com/giuseppeg/flight-request/issues/1).
+
+```javascript
+this.on('thereYouGo', function (event, responseData, textStatus, jqXHR) {
+	console.log('Skål!');
+});
+
+this.get({
+	url: 'http://b.ar/gimme-beer',
+	success: 'thereYouGo'
+});
+```
 
 All the requests are automatically aborted when the window is unloading its content and resources (window.onunload);
 …
