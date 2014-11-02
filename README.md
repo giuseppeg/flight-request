@@ -39,16 +39,49 @@ flight-request exposes the following methods:
 * `this.abort` takes a jqXHR object as parameter and aborts the given request.
 * `this.abortAllRequests` - to abort all the open xhr requests.
 
-Keep in mind that
+[*] by default the requests can be aborted either with this.abort or this.abortAllRequest. If you want to prevent this to happen you can set `noAbort` to true and pass it along with the ajax settings
+
+#### callbacks context
+From v1.0.0 the default callbacks context is the component one.
+However you can change it by setting `context` in the ajax settings or using bind.
+
+```javascript
+// by default the callbacks context is the component one
+this.get({
+	url: 'http://b.ar/gimme-beer',
+	success: function () {
+		// this === component
+		this.doSomething();
+	}
+});
+
+
+// the context can be changed with bind or by setting the context property
+this.get({
+	url: 'http://b.ar/gimme-beer',
+	context: 'foo',
+	success: function () {
+		// this === 'foo'
+	},
+	error: function () {
+		// this === 'bar'
+	}.bind('bar')
+});
+```
+
+#### tunnelMethod - PUT and DELETE request tunnelling
 <blockquote>HTML forms (up to HTML version 4 and XHTML 1) only support GET and POST as HTTP request methods. 
 A workaround for this is to tunnel other methods (PUT and DELETE) through POST by using a hidden form field 
 which is read by the server and the request dispatched accordingly.</blockquote>
 
 [http://stackoverflow.com/a/166501/931594](http://stackoverflow.com/a/166501/931594)
 
-In those cases the request's data object contains a `_method` property with the original request type (verb).
+Method tunnelling is enabled by default for PUT and DELETE requests.
+In those cases the request data object contains a `_method` property with the original request type (verb).<br>
+From v1.0.0 it is possible to disable the tunnelling by setting `tunnelMethod` to `false` in the ajax settings.<br>
+It is also possible to change the tunnelling property name by setting `tunnelMethod` to a string of your choice (one time change)<br>
+or via the component settings `this.attr.tunnelMethod`.
 
-[*] by default the requests can be aborted either with this.abort or this.abortAllRequest. If you want to prevent this to happen you can set `noAbort` to true and pass it along with the ajax settings
 
 ### Events
 You can specify custom events names (instead of functions) to be triggered on `success` and/or `error`.

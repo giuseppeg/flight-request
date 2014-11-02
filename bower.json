@@ -1,7 +1,7 @@
 {
   "name": "flight-request",
   "description": "A Flight mixin for making XHR requests",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "keywords": [
     "flight",
     "flightjs",
@@ -13,10 +13,11 @@
   ],
   "main": "lib/with_request.js",
   "dependencies": {
-    "flight": "~1.1.0"
+    "flight": "^1.2.0"
   },
   "devDependencies": {
-    "jasmine-flight": "~2.2.0"
+    "jasmine-flight": "^2.2.0",
+    "jasmine-ajax": "^2.0.1"
   },
   "ignore": [
     ".gitignore",
